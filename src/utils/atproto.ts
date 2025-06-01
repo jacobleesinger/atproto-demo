@@ -6,8 +6,9 @@ import {
   NodeSavedSessionStore,
   NodeSavedStateStore,
   NodeSavedState,
+  OAuthSession,
 } from "@atproto/oauth-client-node";
-import { AtpAgent } from "@atproto/api";
+import { Agent } from "@atproto/api";
 import path from 'path';
 
 export class StateStore implements NodeSavedStateStore {
@@ -91,10 +92,8 @@ export function createOauthClient() {
   return client;
 }
 
-export function createAgent() {
-  const agent = new AtpAgent({
-    service: 'https://bsky.social'
-  })
+export function createAgent(session: OAuthSession) {
+  const agent = new Agent(session)
 
   return agent
 }

@@ -15,6 +15,11 @@ export const APIRoute = createAPIFileRoute('/api/oauth/callback')({
       const client = createOauthClient()
       const { session, state } = await client.callback(params)
 
+      const agent = createAgent(session)
+      const { data: user } = await agent.getProfile({ actor: session.did })
+
+      console.log('user', user);
+
       // console.log('session', session);
       // console.log('state', state);
 
@@ -23,7 +28,7 @@ export const APIRoute = createAPIFileRoute('/api/oauth/callback')({
 
       // console.log('user', user);
 
-      return json({}) // TODO: redirect to home
+      return json({ user }) // TODO: redirect to home
     } catch (error) {
       console.error('Error in GET /api/oauth/callback', error)
       return json({ error: 'Internal server error' }, { status: 500 })
