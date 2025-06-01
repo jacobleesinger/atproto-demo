@@ -76,8 +76,8 @@ export function createOauthClient() {
     clientMetadata: {
       client_id: `http://localhost?scope=${encodeURIComponent(
         "atproto transition:generic"
-      )}&redirect_uri=http://127.0.0.1:3000/api/oauth/callback`,
-      redirect_uris: ["http://127.0.0.1:3000/api/oauth/callback"],
+      )}&redirect_uri=http://[::1]:3000/api/oauth/callback`,
+      redirect_uris: ["http://[::1]:3000/api/oauth/callback"],
       scope: "atproto transition:generic",
       grant_types: ["authorization_code", "refresh_token"],
       response_types: ["code"],
