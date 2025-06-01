@@ -66,8 +66,8 @@ function RouteComponent() {
       </section>
       <form className="flex flex-col gap-2" action={post.url} method="post">
         <input type="hidden" name="did" value={user.did} />
-        <textarea name="content" className="w-full p-2 border border-gray-300 rounded-md" />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">Post</button>
+        <textarea name="content" className="p-2 border border-gray-300 rounded-md w-40" />
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md w-fit mx-auto">Post</button>
       </form>
     </section>
   )
