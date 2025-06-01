@@ -1,3 +1,4 @@
+
 import { json } from '@tanstack/react-start'
 import { createAPIFileRoute } from '@tanstack/react-start/api'
 import { createAgent, createOauthClient } from '~/utils/atproto'
@@ -28,10 +29,11 @@ export const APIRoute = createAPIFileRoute('/api/oauth/callback')({
 
       // console.log('user', user);
 
-      return json({ user }) // TODO: redirect to home
+      return Response.redirect(new URL(`/post?did=${session.did}`, request.url), 302)
+
     } catch (error) {
       console.error('Error in GET /api/oauth/callback', error)
       return json({ error: 'Internal server error' }, { status: 500 })
     }
-  },
+  }
 })
